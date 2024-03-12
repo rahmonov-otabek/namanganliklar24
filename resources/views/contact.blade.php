@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('title')
+    Bog'lanish
+@endsection
+
 @section('content')
 <section class="contact-details">
     <div class="container">

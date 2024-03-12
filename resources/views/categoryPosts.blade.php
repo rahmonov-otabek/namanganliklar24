@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('title')
+    Yangiliklar
+@endsection
+
 @section('content')
 <section class="news">
     <div class="container">

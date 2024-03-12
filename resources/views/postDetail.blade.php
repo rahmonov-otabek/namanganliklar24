@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('title')
+    Yangilik
+@endsection
+
 @section('content')
 <section class="article">
     <div class="container">
