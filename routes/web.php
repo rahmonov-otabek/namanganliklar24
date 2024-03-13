@@ -18,3 +18,9 @@ Route::get('/', [MainController::class, 'index']);
 Route::get('/category/{slug}', [MainController::class, 'categoryPosts']);
 Route::get('/posts/{slug}', [MainController::class, 'postDetail']);
 Route::get('/contact', [MainController::class, 'contact']);
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
