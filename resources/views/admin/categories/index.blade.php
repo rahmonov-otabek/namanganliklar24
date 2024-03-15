@@ -39,7 +39,10 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $category->name_uz}}</td>
                         <td>{{ $category->slug }}</td> 
-                        <td><a href="#" class="btn btn-danger">Delete</a></td> 
+                        <td>
+                          <a href="#" class="btn btn-danger">Delete</a>
+                          <a href="{{ route('admin.categories.edit', $category->id)}}" class="btn btn-info">Edit</a>
+                        </td> 
                     </tr>
                     @endforeach
                   </tbody></table>
