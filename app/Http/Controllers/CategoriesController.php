@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Str;
 
 class CategoriesController extends Controller
 {
@@ -25,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -36,7 +37,17 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name_uz'=>'required',
+            'name_ru'=>'required',
+        ]);
+
+        $requestData = $request->all(); 
+        $requestData['slug'] = Str::slug($requestData['name_uz']);
+         
+        Category::create($requestData);
+        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully');
+
     }
 
     /**
