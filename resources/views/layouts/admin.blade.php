@@ -103,8 +103,11 @@
       </nav>
      
       @include('admin.sidebar')
-     
-      @yield('content')
+     <div class="main-content">
+      <section class="section"> 
+        @yield('content')
+      </section>
+     </div>
 
       <footer class="main-footer">
         <div class="footer-left">

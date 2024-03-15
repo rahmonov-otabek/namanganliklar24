@@ -4,10 +4,7 @@
     Dashboard
 @endsection
 
-@section('content')
-     <!-- Main Content -->
-     <div class="main-content">
-        <section class="section">
+@section('content') 
           <div class="row ">
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <div class="card">
@@ -99,7 +96,7 @@
               </div>
             </div>
           </div> 
-        </section>
+         
         <div class="settingSidebar">
           <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
           </a>
@@ -191,5 +188,5 @@
             </div>
           </div>
         </div>
-      </div>
+       
 @endsection
