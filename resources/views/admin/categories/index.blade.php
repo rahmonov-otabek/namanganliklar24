@@ -40,7 +40,11 @@
                         <td>{{ $category->name_uz}}</td>
                         <td>{{ $category->slug }}</td> 
                         <td>
-                          <a href="#" class="btn btn-danger">Delete</a>
+                          <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                          </form> 
                           <a href="{{ route('admin.categories.edit', $category->id)}}" class="btn btn-info">Edit</a>
                         </td> 
                     </tr>
