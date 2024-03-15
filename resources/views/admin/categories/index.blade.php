@@ -40,12 +40,15 @@
                         <td>{{ $category->name_uz}}</td>
                         <td>{{ $category->slug }}</td> 
                         <td>
-                          <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
+                           
+                          <a href="{{ route('admin.categories.edit', $category->id)}}" class="btn btn-info">Edit</a>
+                          <a href="{{ route('admin.categories.show', $category->id)}}" class="btn btn-primary">View</a>
+                          <form style="display: inline" action="{{ route('admin.categories.destroy', $category->id) }}" method="POST"
+                            onclick="return confirm('Confirm delete')">
                             @csrf
                             @method('DELETE')
                             <input type="submit" class="btn btn-danger" value="Delete">
-                          </form> 
-                          <a href="{{ route('admin.categories.edit', $category->id)}}" class="btn btn-info">Edit</a>
+                          </form>
                         </td> 
                     </tr>
                     @endforeach
