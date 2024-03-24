@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         return view('admin.dashboard');
     })->name('dashboard');
     Route::resource('categories', CategoriesController::class);  
+    Route::resource('posts', PostController::class);
 }); 
 
 require __DIR__.'/auth.php';

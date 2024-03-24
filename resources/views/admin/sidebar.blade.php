@@ -13,6 +13,9 @@
         <li class="dropdown">
           <a href="{{ route('admin.categories.index') }}" class="nav-link"><i data-feather="monitor"></i><span>Categories</span></a>
         </li>
+        <li class="dropdown">
+          <a href="{{ route('admin.posts.index') }}" class="nav-link"><i data-feather="monitor"></i><span>Posts</span></a>
+        </li>
       </ul>
     </aside>
   </div>
