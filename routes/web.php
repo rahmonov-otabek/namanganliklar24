@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     })->name('dashboard');
     Route::resource('categories', CategoriesController::class);  
     Route::resource('posts', PostController::class);
+    Route::resource('tags', TagsController::class);
 }); 
 
 require __DIR__.'/auth.php';
