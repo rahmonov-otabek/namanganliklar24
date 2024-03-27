@@ -80,9 +80,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('categories', 'post'));
     }
 
     /**
@@ -92,9 +93,30 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title_uz'=>'required',
+            'title_ru'=>'required',
+            'category_id'=>'required',
+            'body_uz'=>'required',
+            'body_ru'=>'required',
+        ]);
+
+        $requestData = $request->all();
+
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $image_name = time().".".$file->getClientOriginalExtension();
+            $file->move('site/images/posts', $image_name);
+            $requestData['image'] = $image_name;
+        }
+
+        $requestData['slug'] = Str::slug($request->title_uz);
+
+        $post->update($requestData);
+        return redirect()->route('admin.posts.index')->with('success','Post updated successfully!');
+    
     }
 
     /**
