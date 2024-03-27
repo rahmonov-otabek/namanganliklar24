@@ -27,7 +27,7 @@
               <div class="card-header">
                 <h4>Posts</h4>
                 <div class="card-header-form">
-                  <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Create</a>
+                  <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Create</a>
                 </div>
               </div>
               <div class="card-body ">
