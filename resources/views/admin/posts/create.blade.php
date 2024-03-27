@@ -8,7 +8,8 @@
     <div class="row">
         
         <div class="col-12 col-md-12 col-lg-12">
-            <form action="{{ route('admin.posts.create') }}" method="POST">
+            <form action="{{ route('admin.posts.store') }}" method="POST"
+            enctype="multipart/form-data">
                 @csrf 
             <div class="card">
               <div class="card-header">
@@ -22,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label>Title (RU)</label>
-                    <input type="text" name="name_ru" class="form-control @error('title_ru')  is-invalid @enderror">
+                    <input type="text" name="title_ru" class="form-control @error('title_ru')  is-invalid @enderror">
                     @error('title_ru') <div class="invalid-feedback"> {{ $message }} </div> @enderror
                   </div> 
                   <div class="form-group">
@@ -42,13 +43,13 @@
                     </div> 
                 <div class="form-group">
                     <label>Category</label>
-                    <select name="" id="" class="form-control">
+                    <select name="category_id" id="" class="form-control">
                         <option value="">Select Category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name_uz }}</option>
                         @endforeach
                     </select>
-                    @error('image') <div class="invalid-feedback"> {{ $message }} </div> @enderror
+                    @error('category_id') <div class="invalid-feedback"> {{ $message }} </div> @enderror
                 </div> 
                   <div class="form-group">
                     <label>Meta title</label>

@@ -55,7 +55,7 @@
                                 {{ $post->category_id }}
                             </td>
                             <td>
-                              <img alt="image" src="admin/assets/{{ $post->image }}" width="35">
+                              <img alt="image" src="site/images/posts/{{ $post->image }}" width="35">
                             </td> 
                             <td><a href="#" class="btn btn-primary">Detail</a></td>
                           </tr>  

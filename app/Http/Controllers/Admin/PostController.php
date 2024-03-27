@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Str;
 
 class PostController extends Controller
 {
@@ -39,7 +40,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title_uz'=>'required',
+            'title_ru'=>'required',
+            'category_id'=>'required',
+            'body_uz'=>'required',
+            'body_ru'=>'required',
+        ]);
+
+        $requestData = $request->all();
+
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $image_name = time().".".$file->getClientOriginalExtension();
+            $file->move('site/images/posts', $image_name);
+            $requestData['image'] = $image_name;
+        }
+
+        $requestData['slug'] = Str::slug($request->title_uz);
+
+        Post::create($requestData);
+        return redirect()->route('admin.posts.index')->with('success','Post created successfully!');
     }
 
     /**
