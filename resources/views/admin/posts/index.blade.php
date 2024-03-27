@@ -61,7 +61,13 @@
                             </td> 
                             <td>
                               <a href="{{ route('admin.posts.show', $post->id)}}" class="btn btn-info">Detail</a>
-                              <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
+                              <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Edit</a> 
+                            <form style="display: inline" action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
+                              onclick="return confirm('Confirm delete')">
+                              @csrf
+                              @method('DELETE')
+                              <input type="submit" class="btn btn-danger" value="Delete">
+                            </form>
                             </td>
                           </tr>  
                         @endforeach  
