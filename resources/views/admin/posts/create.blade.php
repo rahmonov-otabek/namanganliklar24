@@ -27,13 +27,13 @@
                     @error('title_ru') <div class="invalid-feedback"> {{ $message }} </div> @enderror
                   </div> 
                   <div class="form-group">
-                    <label>Body (UZ)</label>
-                    <input type="text" name="body_uz" class="form-control @error('body_uz')  is-invalid @enderror">
+                    <label>Body (UZ)</label> 
+                    <textarea name="body_uz" class="form-control ckeditor @error('body_uz')  is-invalid @enderror"></textarea>
                     @error('body_uz') <div class="invalid-feedback"> {{ $message }} </div> @enderror
                   </div>
                   <div class="form-group">
                       <label>Body (RU)</label>
-                      <input type="text" name="body_ru" class="form-control @error('body_ru')  is-invalid @enderror">
+                      <textarea name="body_ru" class="form-control ckeditor @error('body_uz')  is-invalid @enderror"></textarea>
                       @error('body_ru') <div class="invalid-feedback"> {{ $message }} </div> @enderror
                     </div> 
                 <div class="form-group">
@@ -73,4 +73,11 @@
         </div>
         
     </div>
+@endsection
+
+@section('js')
+    <script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        $('.ckeditor').ckeditor();
+    </script>
 @endsection

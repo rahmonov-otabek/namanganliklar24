@@ -39,6 +39,7 @@
                             T/R
                           </th>
                           <th>Title</th>
+                          <th>Body</th>
                           <th>Category</th>
                           <th>Image</th> 
                           <th>Action</th> 
@@ -51,6 +52,7 @@
                               {{ $loop->iteration }}
                             </td>
                             <td> {{ $post->title_uz }}</td>
+                            <td> {!! $post->body_uz !!}</td>
                             <td class="align-middle">
                                 {{ $post->category_id }}
                             </td>
