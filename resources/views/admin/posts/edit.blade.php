@@ -4,6 +4,10 @@
     Update post
 @endsection
 
+@section('css')
+  <link rel="stylesheet" href="/admin/assets/bundles/select2/dist/css/select2.min.css">
+@endsection
+
 @section('content')
     <div class="row">
         
@@ -53,6 +57,15 @@
                     </select>
                     @error('category_id') <div class="invalid-feedback"> {{ $message }} </div> @enderror
                 </div> 
+                <div class="form-group">
+                  <label>Tags</label>
+                  <select  id="" class="form-control select2" name="tags[]" multiple> 
+                      @foreach ($tags as $tag)
+                          <option @if(in_array($tag->id, $post->tags->pluck('id')->toArray() )) selected @endif value="{{ $tag->id }}">{{ $tag->name_uz }}</option>
+                      @endforeach
+                  </select>
+                  @error('tags') <div class="invalid-feedback"> {{ $message }} </div> @enderror
+              </div>  
                   <div class="form-group">
                     <label>Meta title</label>
                     <input type="text" name="meta_title"  value="{{ $post->meta_title }}" class="form-control">
@@ -82,4 +95,6 @@
     <script>
         $('.ckeditor').ckeditor();
     </script>
+
+  <script src="/admin/assets/bundles/select2/dist/js/select2.full.min.js"></script>
 @endsection

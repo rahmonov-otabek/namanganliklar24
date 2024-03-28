@@ -63,7 +63,7 @@ class PostController extends Controller
 
         $post = Post::create($requestData);
         $post->tags()->attach($request->tags);
-        
+
         return redirect()->route('admin.posts.index')->with('success','Post created successfully!');
     }
 
@@ -87,7 +87,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('admin.posts.edit', compact('categories', 'post'));
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('categories', 'post', 'tags'));
     }
 
     /**
@@ -119,6 +120,8 @@ class PostController extends Controller
         $requestData['slug'] = Str::slug($request->title_uz);
 
         $post->update($requestData);
+        $post->tags()->sync($request->tags);
+
         return redirect()->route('admin.posts.index')->with('success','Post updated successfully!');
     
     }
