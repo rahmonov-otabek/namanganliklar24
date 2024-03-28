@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Str;
@@ -29,7 +30,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -59,7 +61,9 @@ class PostController extends Controller
 
         $requestData['slug'] = Str::slug($request->title_uz);
 
-        Post::create($requestData);
+        $post = Post::create($requestData);
+        $post->tags()->attach($request->tags);
+        
         return redirect()->route('admin.posts.index')->with('success','Post created successfully!');
     }
 

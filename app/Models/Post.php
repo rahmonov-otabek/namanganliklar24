@@ -9,5 +9,10 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $guarded = false;
+    protected $fillable = ['category_id', 'title_uz', 'title_ru', 'body_uz', 'body_ru',
+    'image', 'view', 'meta_title', 'meta_description', 'meta_keywords', 'slug'];
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
 }

@@ -4,6 +4,10 @@
     Create post
 @endsection
 
+@section('css')
+  <link rel="stylesheet" href="/admin/assets/bundles/select2/dist/css/select2.min.css">
+@endsection
+
 @section('content')
     <div class="row">
         
@@ -50,7 +54,16 @@
                         @endforeach
                     </select>
                     @error('category_id') <div class="invalid-feedback"> {{ $message }} </div> @enderror
-                </div> 
+                </div>
+                <div class="form-group">
+                  <label>Tags</label>
+                  <select  id="" class="form-control select2" name="tags[]" multiple> 
+                      @foreach ($tags as $tag)
+                          <option value="{{ $tag->id }}">{{ $tag->name_uz }}</option>
+                      @endforeach
+                  </select>
+                  @error('tags') <div class="invalid-feedback"> {{ $message }} </div> @enderror
+              </div>  
                   <div class="form-group">
                     <label>Meta title</label>
                     <input type="text" name="meta_title" class="form-control">
@@ -80,4 +93,5 @@
     <script>
         $('.ckeditor').ckeditor();
     </script>
-@endsection
+    <script src="/admin/assets/bundles/select2/dist/js/select2.full.min.js"></script>
+@endsection 
