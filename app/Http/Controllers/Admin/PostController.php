@@ -109,6 +109,9 @@ class PostController extends Controller
         ]);
 
         $requestData = $request->all();
+        if(empty($request->is_special)){
+            $requestData['is_special'] = 0;
+        }
 
         if($request->hasFile('image')) {
             $file = $request->file('image');

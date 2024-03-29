@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     public function index()
     {
-        return view("index");
+        $specialPosts = Post::where('is_special', 1)->limit(6)->latest()->get();
+        return view("index", compact("specialPosts"));
     }
 
     public function categoryPosts()
