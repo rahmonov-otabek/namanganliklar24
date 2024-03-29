@@ -66,6 +66,14 @@
                   </select>
                   @error('tags') <div class="invalid-feedback"> {{ $message }} </div> @enderror
               </div>  
+              <div class="form-group">
+                <div class="control-label">is Special ?</div>
+                <label class="custom-switch mt-2">
+                  <input type="checkbox" name="is_special" value='1' {{ $post->is_special==1 ? 'checked' : ''}}
+                    class="custom-switch-input">
+                  <span class="custom-switch-indicator"></span> 
+                </label>
+              </div>
                   <div class="form-group">
                     <label>Meta title</label>
                     <input type="text" name="meta_title"  value="{{ $post->meta_title }}" class="form-control">
