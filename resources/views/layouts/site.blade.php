@@ -36,12 +36,21 @@
                             <input type="search" class="search-input">
                             <button type="submit" class="btn search-btn"></button>
                         </form>
-                        <div class="languages">
-                            <button type="button" class="btn language__option language__option--active">РУ</button>
+                        <div class="languages"> 
+                            @if (\App::getLocale()=='ru') 
+                                <a href="#" class="btn language__option language__option--ru">Ru</a>
+                                <div class="languages__list">
+                                    <a href="/lang/uz" class="btn language__option language__option--uz"
+                                        data-status="disabled">UZ</a>
+                                </div>
+                            @else 
+                            <a href="#" class="btn language__option language__option--uz">Uz</a>
                             <div class="languages__list">
-                                <button type="button" class="btn language__option language__option--uz"
-                                    data-status="disabled">UZ</button>
+                                <a href="/lang/ru" class="btn language__option language__option--ru"
+                                    data-status="disabled">Ru</a>
                             </div>
+                            @endif
+                            
                         </div>
                         <div class="telegram-join basic-flex">
                             <a href="#"><img src="img/tg.png" alt="Telegram">Подписатся</a>
