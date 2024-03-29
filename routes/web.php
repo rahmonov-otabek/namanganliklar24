@@ -23,9 +23,9 @@ Route::get('/lang/{lang}', function($lang) {
 });
 
 Route::get('/', [MainController::class, 'index']);
-Route::get('/category/{slug}', [MainController::class, 'categoryPosts']);
-Route::get('/posts/{slug}', [MainController::class, 'postDetail']);
-Route::get('/contact', [MainController::class, 'contact']);
+Route::get('/category/{slug}', [MainController::class, 'categoryPosts'])->name('categoryPosts');
+Route::get('/posts/{slug}', [MainController::class, 'postDetail'])->name('postDetail');
+Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
     Route::get('/dashboard', function () {

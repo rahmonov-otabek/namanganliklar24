@@ -25,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
-    }
+
+        view()->composer("layouts.site", function ($view) {
+            $categories = \App\Models\Category::all();
+            $view->with(compact('categories'));           
+        });
+    } 
 }
