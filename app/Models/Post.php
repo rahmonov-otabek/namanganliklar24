@@ -15,4 +15,12 @@ class Post extends Model
     public function tags(){
         return $this->belongsToMany(Tag::class);
     }
+
+    public static function boot(){
+        parent::boot();
+        static::saving(function (Post $post) {
+            $post->slug = \Str::slug($post->title_uz);
+        });
+    }
+
 }

@@ -10,7 +10,9 @@ class MainController extends Controller
     public function index()
     {
         $specialPosts = Post::where('is_special', 1)->limit(6)->latest()->get();
-        return view("index", compact("specialPosts"));
+        $latestPosts = Post::limit(6)->latest()->get();
+        $popularPosts = Post::limit(4)->orderBy('view', 'desc')->get();
+        return view("index", compact("specialPosts", "latestPosts", "popularPosts"));
     }
 
     public function categoryPosts()

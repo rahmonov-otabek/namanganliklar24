@@ -59,7 +59,7 @@ class PostController extends Controller
             $requestData['image'] = $image_name;
         }
 
-        $requestData['slug'] = Str::slug($request->title_uz);
+        // $requestData['slug'] = Str::slug($request->title_uz);
 
         $post = Post::create($requestData);
         $post->tags()->attach($request->tags);
@@ -120,7 +120,7 @@ class PostController extends Controller
             $requestData['image'] = $image_name;
         }
 
-        $requestData['slug'] = Str::slug($request->title_uz);
+        // $requestData['slug'] = Str::slug($request->title_uz);
 
         $post->update($requestData);
         $post->tags()->sync($request->tags);
