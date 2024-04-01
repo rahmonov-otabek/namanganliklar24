@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -11,13 +12,15 @@ class MainController extends Controller
     {
         $specialPosts = Post::where('is_special', 1)->limit(6)->latest()->get();
         $latestPosts = Post::limit(6)->latest()->get();
-        $popularPosts = Post::limit(4)->orderBy('view', 'desc')->get();
+        
         return view("index", compact("specialPosts", "latestPosts", "popularPosts"));
     }
 
-    public function categoryPosts()
+    public function categoryPosts($slug)
     {
-        return view("categoryPosts");
+        $category = Category::where('slug', $slug)->first(); 
+
+        return view("categoryPosts", compact('category'));
     }
 
     public function postDetail()
