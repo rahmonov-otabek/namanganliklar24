@@ -13,7 +13,7 @@ class MainController extends Controller
         $specialPosts = Post::where('is_special', 1)->limit(6)->latest()->get();
         $latestPosts = Post::limit(6)->latest()->get();
         
-        return view("index", compact("specialPosts", "latestPosts", "popularPosts"));
+        return view("index", compact("specialPosts", "latestPosts"));
     }
 
     public function categoryPosts($slug)
@@ -23,9 +23,19 @@ class MainController extends Controller
         return view("categoryPosts", compact('category'));
     }
 
-    public function postDetail()
+    public function postDetail($slug)
     {
-        return view("postDetail");
+        $post = Post::where('slug', $slug)->first();
+        $post->increment('view');
+        $post->save();
+        
+        $otherPosts = Post::where('category_id', $post->category_id)
+        ->where('id', '!=', $post->id)
+        ->limit(3)
+        ->latest()
+        ->get();
+        
+        return view("postDetail", compact('post', 'otherPosts'));
     }
 
     public function contact()

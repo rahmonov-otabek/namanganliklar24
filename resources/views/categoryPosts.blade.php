@@ -13,7 +13,7 @@
           <ul class="news__list basic-flex">  
             @foreach ($category->posts as $post) 
             <li class="news__item">
-              <a href="#" class="basic-flex news__link">
+              <a href="{{ route('postDetail', $post->slug) }}" class="basic-flex news__link">
                 <div class="news-image-wrapper"><img src="/site/images/posts/{{ $post->image }}" alt="Bottom Img"></div>
                 <div class="news-box basic-flex">
                   <h4 class="news__title">{{ $post['title_'.\App::getLocale()]}}</h4>

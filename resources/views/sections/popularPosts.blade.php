@@ -4,7 +4,7 @@
       <ul class="popular-news__list">
         @foreach ($popularPosts as $post)
         <li class="popular-news__item">
-          <a href="#">
+          <a href="{{ route('postDetail', $post->slug) }}">
             <p class="popular-news__description">
               {{ $post['title_'.\App::getLocale() ]}}
             </p>

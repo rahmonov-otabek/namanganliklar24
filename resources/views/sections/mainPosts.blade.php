@@ -3,7 +3,7 @@
       <ul class="posts__list basic-flex">
         @foreach ($specialPosts as $post)
           <li class="posts__item">
-          <a href="#">
+          <a href="{{ route('postDetail', $post->slug) }}">
             <img src="{{asset('site/images/posts/' . $post->image)  }}"  alt="Image" 
             class="posts__img">
             <h2 class="posts__title">{{ $post['title_'.\App::getLocale()] }}</h2>
